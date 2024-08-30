@@ -1,0 +1,158 @@
+/* Hide the scrollbar but allow scrolling */
+#background-video {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1; /* Ensure the video is behind the content */
+}
+.card-content {
+    max-height: 150px; /* Adjust to your preferred height */
+    overflow: hidden;
+    overflow-y: scroll;
+    -ms-overflow-style: none;  /* Hide scrollbar in IE and Edge */
+    scrollbar-width: none;  /* Hide scrollbar in Firefox */
+}
+
+
+.card-content::-webkit-scrollbar {
+    display: none;  /* Hide scrollbar in WebKit browsers (Chrome, Safari) */
+}
+
+/* Other styles remain the same */
+body {
+    background-color: white; /* Fallback color in case video fails to load */
+    margin: 0;
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.card-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    max-width: 1200px; /* Limit the width of the container */
+    justify-content: space-between;
+}
+
+.card {
+    position: relative;
+    width: 100%;
+    max-width: 350px; /* Adjust max width for cards */
+    height: 350px; /* Adjust height */
+    background-color: #333;
+    border-radius: 15px;
+    overflow: hidden;
+    transition: transform 0.3s, background-color 0.3s, box-shadow 0.3s;
+    cursor: pointer;
+    color: white;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.hello-message {
+    display: none;
+    font-size: 1.5em;
+    color: #fff;
+    margin-top: 10px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 10; /* Ensure it's on top of other content */
+}
+
+.card-logo {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Ensure the image covers the card */
+    transition: opacity 0.3s;
+}
+
+.card-content {
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s, visibility 0.3s;
+    text-align: center;
+    z-index: 1;
+    padding: 20px;
+}
+
+.card-title {
+    font-size: 1.8em;
+    margin: 0;
+}
+
+.card-text {
+    font-size: 1em;
+    margin: 10px 0;
+}
+
+.card button {
+    padding: 8px 16px;
+    background: transparent;
+    border: 1px solid #fff;
+    border-radius: 4px;
+    cursor: pointer;
+    color: #fff;
+    transition: background 0.3s, color 0.3s;
+}
+
+.card button:hover {
+    background: #fff;
+    color: #333;
+}
+
+.card:hover {
+    background: linear-gradient(145deg, #9d4edd, #32a8a8);
+    box-shadow: 0 0 30px rgba(255, 255, 255, 0.5), 0 0 60px rgba(255, 0, 255, 0.3);
+    transform: scale(1.05);
+}
+
+.card:hover .card-logo {
+    opacity: 0; /* Fade out the image */
+}
+
+.card:hover .card-content {
+    opacity: 1; /* Fade in the text */
+    visibility: visible;
+}
+
+.card-list {
+    display: none;
+}
+
+@media (max-width: 768px) {
+    .card-container {
+        justify-content: center;
+    }
+
+    .card {
+        max-width: 100%;
+        height: auto;
+    }
+
+    .card-logo {
+        height: 200px; /* Adjust height on smaller screens */
+    }
+}
+ul {
+    padding-left: 0; /* Remove default padding */
+    list-style-type: none; /* Remove default bullet points */
+}
+
+li {
+    margin-top: 10px;  /* Space above each list item */
+    margin-bottom: 10px; /* Space below each list item */
+    padding: 10px; /* Optional: Add padding inside each list item */
+    border-radius: 5px; /* Optional: Add border radius */
+}

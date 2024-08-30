@@ -7,10 +7,6 @@
     <link rel="stylesheet" href="index.css">
 </head>
 <body>
-    <video autoplay muted loop id="background-video">
-        <source src="video.mp4" type="video/mp4">
-        Your browser does not support the video tag.
-    </video>
     <div class="card-container">
         <!-- Card 1 -->
         <div class="card">
@@ -18,8 +14,7 @@
             <div class="card-content">
                 <h2 class="card-title">Paper Presentation</h2>
                 <p class="card-text">Showcase your research and communication skills by presenting a well-researched paper on a given topic.</p>
-                <button >Rules and Regulation</button>
-                <div class="hello-message" id="hello">
+                <button onclick="toggleList(this)">Rules and Regulation</button>
                     <ul class="card-list">
                         <li> ⁠Maximum of 2 teams allowed to participate from a college.
                         </li>
@@ -41,7 +36,6 @@
                             2.⁠ ⁠Use clear and readable fonts.
                             3.⁠ ⁠Usage of animations and pictures is permitted.</li>
                     </ul>
-                </div>
             </div>
         </div>
 
@@ -106,6 +100,7 @@
                         2.⁠ ⁠Use clear and readable fonts.
                         3.⁠ ⁠Usage of animations and pictures is permitted.</li>
                 </ul>
+                <div class="card-text">name</div>
             </div>
         </div>
 
@@ -205,22 +200,20 @@
     </div>
 
     <script>
-       document.addEventListener('DOMContentLoaded', () => {
-    const buttons = document.querySelectorAll('.card button');
-    
-    buttons.forEach(button => {
-        button.addEventListener('click', (event) => {
-            const cardContent = event.target.closest('.card-content');
-            const helloMessage = cardContent.querySelector('.hello-message');
-            
-            cardContent.querySelectorAll('.card-title, .card-text, button').forEach(element => {
-                element.style.display = 'none'; // Hide title, text, and button
-            });
-            
-            helloMessage.style.display = 'block'; // Show "Hello" message
-        });
-    });
-});
+        function toggleList(button) {
+            const list = button.nextElementSibling;
+            const cardContent = button.closest('.card-content');
+
+            if (list.style.display === "block") {
+                list.style.display = "none";
+                cardContent.style.maxHeight = "150px"; // Adjust to your preferred default height
+                cardContent.style.overflow = "hidden";
+            } else {
+                list.style.display = "block";
+                cardContent.style.maxHeight = "400px"; // Adjust to your preferred expanded height
+                cardContent.style.overflowY = "scroll";
+            }
+        }
     </script>
 </body>
 </html>

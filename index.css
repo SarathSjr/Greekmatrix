@@ -40,6 +40,7 @@ body {
     justify-content: space-between;
 }
 
+
 .card {
     position: relative;
     width: 100%;
@@ -155,4 +156,8 @@ li {
     margin-bottom: 10px; /* Space below each list item */
     padding: 10px; /* Optional: Add padding inside each list item */
     border-radius: 5px; /* Optional: Add border radius */
+}
+.card-text{
+    font-size: 16px;
+    color: #fff;
 }
